@@ -32,7 +32,7 @@ const SignUpPage = () => {
         </RegisterLink>
         <RegisterLink
           authUrlParams={{
-            connection_id: process.env.GITHUB_CONNECTION_ID!,
+            connection_id: process.env.GMAIL_CONNECTION_ID!,
           }}
         >
           <Button variant={"outline"} size={"icon"}>
