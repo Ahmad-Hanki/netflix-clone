@@ -4,7 +4,10 @@ import React from "react";
 import GoogleIcon from "@/assets/google.svg";
 import GithubIcon from "@/assets/github.svg";
 import Image from "next/image";
-import { LoginLink, RegisterLink } from "@kinde-oss/kinde-auth-nextjs/components";
+import {
+  LoginLink,
+  RegisterLink,
+} from "@kinde-oss/kinde-auth-nextjs/components";
 import Email from "./_components/Email";
 const SignUpPage = () => {
   return (
@@ -20,7 +23,7 @@ const SignUpPage = () => {
       <div className="flex w-full justify-center items-center gap-x-3 mt-6">
         <RegisterLink
           authUrlParams={{
-            connection_id: process.env.GITHUB_CONNECTION_ID ?? "",
+            connection_id: process.env.GITHUB_CONNECTION_ID!,
           }}
         >
           <Button variant={"outline"} size={"icon"}>
@@ -29,16 +32,14 @@ const SignUpPage = () => {
         </RegisterLink>
         <RegisterLink
           authUrlParams={{
-            connection_id: process.env.GITHUB_CONNECTION_ID ?? "",
+            connection_id: process.env.GITHUB_CONNECTION_ID!,
           }}
         >
           <Button variant={"outline"} size={"icon"}>
             <Image src={GoogleIcon} alt="google" className="w-6 h-6" />
           </Button>
         </RegisterLink>
-        <LoginLink>
-          wtf
-        </LoginLink>
+        <LoginLink>wtf</LoginLink>
       </div>
     </div>
   );

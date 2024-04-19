@@ -17,7 +17,7 @@ export default async function Home() {
     <div>
       <Button>
         <LogoutLink >
-          {email}
+          {email} meh
         </LogoutLink>
       </Button>
       <h1>Hello</h1>

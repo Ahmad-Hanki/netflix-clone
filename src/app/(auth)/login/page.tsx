@@ -25,7 +25,7 @@ const LoginPage = () => {
       <div className="flex w-full justify-center items-center gap-x-3 mt-6">
         <LoginLink
           authUrlParams={{
-            connection_id: process.env.GITHUB_CONNECTION_ID ?? "",
+            connection_id: process.env.GITHUB_CONNECTION_ID!,
           }}
         >
           <Button variant={"outline"} size={"icon"}>
@@ -34,7 +34,7 @@ const LoginPage = () => {
         </LoginLink>
         <LoginLink
           authUrlParams={{
-            connection_id: process.env.GMAIL_CONNECTION_ID ?? "",
+            connection_id:process.env.GMAIL_CONNECTION_ID!,
           }}
         >
           <Button variant={"outline"} size={"icon"}>
