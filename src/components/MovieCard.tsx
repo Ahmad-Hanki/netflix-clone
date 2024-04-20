@@ -1,10 +1,11 @@
-'use client'
+"use client";
 
 import { Heart, PlayCircle } from "lucide-react";
 import { Button } from "./ui/button";
 import PlayVideoModal from "./PlayVideoModal";
 import { useState } from "react";
 import { usePathname } from "next/navigation";
+import { addTowatchlist, deleteFromWatchlist } from "@/action";
 
 interface iAppProps {
   title: string;
@@ -29,18 +30,21 @@ const MovieCard = ({
   time,
   year,
 }: iAppProps) => {
-    const [open, setOpen] = useState(false);
-    const pathName = usePathname();
+  const [open, setOpen] = useState(false);
+  const pathName = usePathname();
   return (
     <>
-      <button className="-mt-14" onClick={() => {
-        setOpen(true);
-      }}>
+      <button
+        className="-mt-14"
+        onClick={() => {
+          setOpen(true);
+        }}
+      >
         <PlayCircle className="h-20 w-20" />
       </button>
       <div className="right-5 top-5 absolute z-10">
         {watchList ? (
-          <form >
+          <form action={deleteFromWatchlist}>
             {" "}
             <input type="hidden" name="watchlistId" value={wachtListId} />
             <input type="hidden" name="pathname" value={pathName} />
@@ -49,7 +53,7 @@ const MovieCard = ({
             </Button>
           </form>
         ) : (
-          <form >
+          <form action={addTowatchlist}>
             <input type="hidden" name="movieId" value={movieId} />
             <input type="hidden" name="pathname" value={pathName} />
             <Button variant="outline" size="icon">
