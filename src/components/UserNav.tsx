@@ -1,3 +1,4 @@
+
 import { DropdownMenuContent } from "@radix-ui/react-dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { Button } from "./ui/button";
@@ -10,7 +11,8 @@ import {
 } from "./ui/dropdown-menu";
 import { LogoutLink } from "@kinde-oss/kinde-auth-nextjs/components";
 
-const UserNav = () => {
+const UserNav = async () => {
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -21,7 +23,7 @@ const UserNav = () => {
                 "https://zsbaehxifjenygayncod.supabase.co/storage/v1/object/public/userImage/avatar.png"
               }
             />
-            <AvatarFallback className="rounded-sm">JAM</AvatarFallback>
+            <AvatarFallback className="rounded-sm">name</AvatarFallback>
           </Avatar>
         </Button>
       </DropdownMenuTrigger>
@@ -30,7 +32,7 @@ const UserNav = () => {
           <div className="flex flex-col space-y-1">
             <p className="text-sm font-medium leading-none">Jan</p>
             <p className="text-xs font-xs leading-none text-muted-foreground">
-              Email.com
+              emial
             </p>
           </div>
         </DropdownMenuLabel>
