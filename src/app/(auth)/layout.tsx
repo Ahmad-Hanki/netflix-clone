@@ -1,11 +1,13 @@
 import Image from "next/image";
 import Hero from "@/assets/login_background.jpg";
 import Logo from "@/assets/netflix_logo.svg";
+import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 interface AuthLayoutProps {
   children: React.ReactNode;
 }
 
 const AuthLayout = ({ children }: AuthLayoutProps) => {
+  const {isAuthenticated} = getKindeServerSession()
   return (
     <div className="relative flex h-screen w-screen flex-col bg-black md:items-center md:justify-center md:bg-transparent ">
       <Image

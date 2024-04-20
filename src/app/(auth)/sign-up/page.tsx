@@ -9,7 +9,15 @@ import {
   RegisterLink,
 } from "@kinde-oss/kinde-auth-nextjs/components";
 import Email from "./_components/Email";
-const SignUpPage = () => {
+import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
+import { redirect } from "next/navigation";
+const SignUpPage = async () => {
+  const { isAuthenticated } = getKindeServerSession();
+  const user = await isAuthenticated();
+
+  if (user) {
+    redirect("/home");
+  }
   return (
     <div className="mt-24 rounded bg-black/80 py-10 px-6 md:mt-0 md:max-w-sm md:px-14">
       <Email />
