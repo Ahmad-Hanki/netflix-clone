@@ -3,8 +3,20 @@ import Image from "next/image";
 import Link from "next/link";
 import Logo from "@/assets/netflix_logo.svg";
 import { usePathname } from "next/navigation";
-import { Bell, Search } from "lucide-react";
+import { Bell, Menu, Search } from "lucide-react";
 import UserNav from "./UserNav";
+
+import { Button } from "@/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { LogoutLink } from "@kinde-oss/kinde-auth-nextjs";
 
 interface LinksProps {
   name: string;
@@ -52,10 +64,55 @@ const Navbar = () => {
             );
           })}
         </ul>
+        <div className="lg:hidden ml-16">
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Menu size={20} />
+            </DropdownMenuTrigger>
+            <DropdownMenuContent>
+              <DropdownMenuLabel>Categories</DropdownMenuLabel>
+              <DropdownMenuSeparator />
+              <DropdownMenuGroup>
+                {links.map((link, i) => {
+                  return (
+                    <div key={i}>
+                      {pathname === link.href ? (
+                        <DropdownMenuItem>
+                          <Link
+                            href={link.href}
+                            className="text-white font-semibold underline text-sm"
+                          >
+                            {link.name}
+                          </Link>
+                        </DropdownMenuItem>
+                      ) : (
+                        <DropdownMenuItem>
+                          {" "}
+                          <Link
+                            href={link.href}
+                            className="text-gray-300 font-normal text-sm"
+                          >
+                            {link.name}
+                          </Link>
+                        </DropdownMenuItem>
+                      )}
+                    </div>
+                  );
+                })}
+              </DropdownMenuGroup>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem className="w-full">
+                <LogoutLink className="w-full">
+                  <Button className="w-full">Logout</Button>
+                </LogoutLink>
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </div>
       </div>
       <div className="flex items-center gap-x-8">
         <Search className="w-5 g-5 text-gray-300 cursor-pointer" />
-        <Bell className="h-5 w-5 text-gray-500"/>
+        <Bell className="h-5 w-5 text-gray-500" />
         <UserNav />
       </div>
     </div>
